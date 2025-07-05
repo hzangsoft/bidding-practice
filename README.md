@@ -1,1 +1,1 @@
-This is a personal project to practice my Java (non) skills. The application is to be used to practice the bidding phase of the game of bridge- This is, as of July 5th, 2025, not a complete and executable application.
+This is a personal project to practice my Java (non) skills. The application is to be used to practice the bidding phase of the game of bridge. This is, as of July 5th, 2025, not a complete and executable application.
