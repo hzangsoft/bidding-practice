@@ -1,9 +1,21 @@
 package application;
 
+import board.Board;
+import deckOfCards.Deck;
+import javafx.event.ActionEvent;
+
 public class MainController {
-	
+
 	public void generate(ActionEvent e) {
-		System.out.println("Button pressed!");
+
+		Deck deck = new Deck();
+		Board board;
+
+		for (int i = 1; i < 33;  i++) {
+			deck.shuffle();
+			board = new Board(i, deck);
+			System.out.println(board.toString());
+		}
 	}
 
 }
