@@ -1,5 +1,7 @@
 package hand;
 
+import java.util.Arrays;
+
 import deckOfCards.Card;
 import deckOfCards.Rank;
 import deckOfCards.Suit;
@@ -131,5 +133,12 @@ public class Hand {
 			throw new ArrayIndexOutOfBoundsException("Illegal suit length in LTC calculation");
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Hand [hand=" + Arrays.toString(hand) + ", hcp=" + hcp + ", ltcCount=" + ltcCount + "]";
+	}
+	
+	
 	
 }

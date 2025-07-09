@@ -1,5 +1,8 @@
 package board;
 
+
+
+import deckOfCards.Card;
 import deckOfCards.Deck;
 import hand.Hand;
 
@@ -22,9 +25,10 @@ public class Board {
 	public Board(int boardNumber, Deck deck) {
 		super();
 		this.boardNumber = boardNumber;
-		//		for (int i = 0; i < 13; i++) {
-		//			north[i] = deck.dealTopOfDeck();
-		//		}
+		north = new Hand(deck.dealHand());
+		east = new Hand(deck.dealHand());
+		south = new Hand(deck.dealHand());
+		west = new Hand(deck.dealHand());
 	}
 
 	public String getDealer() {
@@ -41,6 +45,10 @@ public class Board {
 		result += "Board:" + this.boardNumber + "\n";
 		result += "Dealer:" + getDealer() + "\n";
 		result += "Vulnerability:" + getVulnerability() + "\n";
+		result += north.toString() + "\n";
+		result += east.toString() + "\n";
+		result += south.toString() + "\n";
+		result += west.toString() + "\n";
 		return result;
 	}
 

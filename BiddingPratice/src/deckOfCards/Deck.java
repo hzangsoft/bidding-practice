@@ -31,10 +31,23 @@ public class Deck {
 		return result;
 	}
 	
-	public Card dealTopOfDeck() {
-		return deck.removeFirst();
+	public Card dealTopOfDeck() throws IndexOutOfBoundsException {
+		if (this.deck.size() == 0)
+			throw new IndexOutOfBoundsException("Trying to deal a card from an empty deck.");
+		else
+			return this.deck.removeFirst();
 	}
 	
-	
-	
+	public Card[] dealHand() throws IndexOutOfBoundsException {
+		Card[] newHand = new Card[13];
+		if (this.deck.size() % 13 != 0) {
+			throw new IndexOutOfBoundsException("THe deck has an invalid number of cards (should be a multiple of 13.");
+		} else {
+			for (int i = 0; i < 13; i++) {
+				newHand[i] = dealTopOfDeck();
+			}
+			return newHand;
+		}		
+	}
+
 }
