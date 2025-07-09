@@ -1,12 +1,13 @@
 package hand;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import deckOfCards.Card;
 import deckOfCards.Rank;
 import deckOfCards.Suit;
 
-public class Hand {
+public class Hand{
 
 	Card[] hand = new Card [13];
 
@@ -16,6 +17,8 @@ public class Hand {
 	public Hand(Card[] hand) {
 		super();
 		this.hand = hand;
+		Arrays.sort(hand);
+		Collections.reverse(Arrays.asList(hand));
 		this.hcp = 0;
 		for (Card card : this.hand) {
 			this.hcp += card.getRank().getHcpValue();
@@ -102,6 +105,9 @@ public class Hand {
 			// AQJ counts as 0.5 losers.
 			else if(containsAce && containsQueen && containsJack)
 				return 0.5f;
+			// AQT counts as 0.5 losers.
+			else if(containsAce && containsQueen && containsTen)
+				return 1.0f;
 			// AQx counts as 1.5 losers.
 			else if(containsAce && containsQueen)
 				return 1.5f;
@@ -110,7 +116,7 @@ public class Hand {
 				return 1.0f;
 			// AJx or worse counts as 2 losers.
 			else if(containsAce)
-				return 1.0f;
+				return 2.0f;
 			// KQJ counts as 1 loser.
 			else if(containsKing && containsQueen && containsJack)
 				return 2.0f;
@@ -134,6 +140,10 @@ public class Hand {
 		}
 	}
 
+	public void sort() {
+		
+		
+	}
 	@Override
 	public String toString() {
 		return "Hand [hand=" + Arrays.toString(hand) + ", hcp=" + hcp + ", ltcCount=" + ltcCount + "]";
